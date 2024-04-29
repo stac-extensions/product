@@ -1,67 +1,95 @@
 {
+  "type": "Feature",
   "stac_version": "1.0.0",
   "stac_extensions": [
-    "https://stac-extensions.github.io/template/v1.0.0/schema.json"
+    "https://stac-extensions.github.io/product/v0.1.0/schema.json"
   ],
-  "type": "Feature",
-  "id": "item",
-  "bbox": [
-    172.9,
-    1.3,
-    173,
-    1.4
-  ],
+  "id": "sentinel-1-example",
+  "properties": {
+    "datetime": "2018-11-03T23:58:55.617217Z",
+    "start_datetime": "2018-11-03T23:58:55.121559Z",
+    "end_datetime": "2018-11-03T23:59:55.112875Z",
+    "platform": "sentinel-1a",
+    "constellation": "sentinel-1",
+    "instruments": [
+      "c-sar"
+    ],
+    "product:type": "GRD",
+    "product:timeliness": "PT3H"
+  },
   "geometry": {
     "type": "Polygon",
     "coordinates": [
       [
         [
-          172.9,
-          1.3
+          -67.071648,
+          -64.72924
         ],
         [
-          173,
-          1.3
+          -65.087479,
+          -56.674374
         ],
         [
-          173,
-          1.4
+          -68.033211,
+          -51.105831
         ],
         [
-          172.9,
-          1.4
+          -70.275032,
+          -59.805672
         ],
         [
-          172.9,
-          1.3
+          -67.071648,
+          -64.72924
         ]
       ]
     ]
   },
-  "properties": {
-    "datetime": "2020-12-11T22:38:32Z",
-    "template:new_field": "test",
-    "template:xyz": {
-      "x": 1,
-      "y": 2,
-      "z": 3
-    },
-    "template:another_one": [
-      1,
-      2,
-      3
-    ]
-  },
   "links": [
     {
-      "href": "https://example.com/examples/item.json",
-      "rel": "self"
+      "rel": "root",
+      "href": "../../catalog.json",
+      "type": "application/json"
+    },
+    {
+      "rel": "parent",
+      "href": "../collection.json",
+      "type": "application/json"
     }
   ],
   "assets": {
-    "data": {
-      "href": "https://example.com/examples/file.xyz",
-      "template:new_field": "test"
+    "noises": {
+      "href": "https://example.com/collections/sentinel-1/items/annotation/calibration/noise-s1a-ew-grd-hh-20181103t235855-20181103t235955-024430-02ad5d-001.xml",
+      "type": "text/xml",
+      "title": "Calibration Schema"
+    },
+    "calibrations": {
+      "href": "https://example.com/collections/sentinel-1/items/annotation/calibration/calibration-s1a-ew-grd-hh-20181103t235855-20181103t235955-024430-02ad5d-001.xml",
+      "type": "text/xml",
+      "title": "Noise Schema"
+    },
+    "products": {
+      "href": "https://example.com/collections/sentinel-1/items/annotation/s1a-ew-grd-hh-20181103t235855-20181103t235955-024430-02ad5d-001.xml",
+      "type": "text/xml",
+      "title": "Product Schema"
+    },
+    "measurement": {
+      "href": "https://example.com/collections/sentinel-1/items/measurement/s1a-ew-grd-hh-20181103t235855-20181103t235955-024430-02ad5d-001.tiff",
+      "type": "image/tiff",
+      "title": "Measurements",
+      "sar:polarizations": [
+        "HH"
+      ]
+    },
+    "thumbnail": {
+      "href": "https://example.com/collections/sentinel-1/items/preview/quick-look.png",
+      "type": "image/png",
+      "title": "Thumbnail"
     }
-  }
+  },
+  "bbox": [
+    -70.275032,
+    -64.72924,
+    -65.087479,
+    -51.105831
+  ]
 }
