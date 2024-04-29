@@ -30,7 +30,7 @@ The fields in the table below can be used in these parts of STAC documents:
 | Field Name         | Type   | Description       |
 | ------------------ | ------ | ----------------- |
 | product:type       | string | The product type. |
-| product:timeliness | string | The timeliness of the product as an [ISO 8601 Duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| product:timeliness | string | The average expected timeliness of the product as an [ISO 8601 Duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
 
 ### Additional Field Information
 
