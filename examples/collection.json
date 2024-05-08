@@ -36,6 +36,9 @@
     ],
     "product:timeliness": [
       "PT3H"
+    ],
+    "product:timeliness_category": [
+      "NRT"
     ]
   },
   "links": [

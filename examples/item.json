@@ -15,7 +15,8 @@
       "c-sar"
     ],
     "product:type": "GRD",
-    "product:timeliness": "PT3H"
+    "product:timeliness": "PT3H",
+    "product:timeliness_category": "NRT"
   },
   "geometry": {
     "type": "Polygon",

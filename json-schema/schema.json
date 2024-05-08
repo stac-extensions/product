@@ -105,12 +105,20 @@
   "definitions": {
     "fields": {
       "type": "object",
+      "dependencies": {
+        "product:timeliness_category": [
+          "product:timeliness"
+        ]
+      },
       "properties": {
         "product:type": {
           "$ref": "#/definitions/product:type"
         },
         "product:timeliness": {
           "$ref": "#/definitions/product:timeliness"
+        },
+        "product:timeliness_category": {
+          "$ref": "#/definitions/product:timeliness_category"
         }
       },
       "patternProperties": {
@@ -125,6 +133,9 @@
     "product:timeliness": {
       "type": "string",
       "format": "duration"
+    },
+    "product:timeliness_category": {
+      "type": "string"
     },
     "json_schema": {
       "$comment": "JSON Schema",
