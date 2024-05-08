@@ -31,9 +31,9 @@ The fields in the table below can be used in these parts of STAC documents:
 - [x] Assets (for both Collections and Items, incl. Item Asset Definitions in Collections)
 - [ ] Links
 
-| Field Name                  | Type   | Description       |
-| --------------------------- | ------ | ----------------- |
-| product:type                | string | The product type. |
+| Field Name                  | Type   | Description                                                  |
+| --------------------------- | ------ | ------------------------------------------------------------ |
+| product:type                | string | The product type.                                            |
 | product:timeliness          | string | The average expected timeliness of the product as an [ISO 8601 Duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
 | product:timeliness_category | string | A proprietary category identifier for the timeliness of the product. |
 
@@ -48,6 +48,30 @@ The product type in this extension is a free-form text that providers can freely
 Some extensions may specify more specific rules for this field.
 
 This field superceedes the `sar:product_type` field.
+
+#### Timeliness
+
+Below you can find an example that shows how the timeliness fields could be used.
+
+The Copernicus programme releases products on three levels of timeliness:
+
+| Name                | Description                                                  | `product:timeliness`    | `product:timeliness_category` |
+| ------------------- | ------------------------------------------------------------ | ----------------------- | ----------------------------- |
+| Near Real-Time      | Delivered less than 3 hours after data acquisition.          | e.g. `PT3H` (3 hours)   | `NRT`                         |
+| Short Time-Critical | Delivered within 36 (Sentinel-6) to 48 (Sentinel-3) hours after data acquisition. | e.g. `PT36H` (36 hours) | `STC`                         |
+| Non Time-Critical   | Delivered typically within 1 month after data acquisition.   | e.g `P1M` (1 month)     | `NTC`                         |
+
+> \[!WARNING]
+>
+> Be careful when specifying the durations for `product:timeliness`.
+> It is recommended to closely reflect the semantics of timeliness as specified by the provider.
+> For example, if the timeliness is 36 hours, specify  `PT36H` instead of  `P1DT12H`, although allowed:
+>
+> > The standard does not prohibit date and time values in a duration  representation from exceeding their "carry over points".
+> > Thus, `PT36H` could be used as well as `P1DT12H` for representing the same duration.
+> > But keep in mind that `PT36H` is not the same as  `P1DT12H` when switching from or to Daylight saving time.
+>
+> Source: <https://en.wikipedia.org/wiki/ISO_8601#Durations>
 
 ## Contributing
 
