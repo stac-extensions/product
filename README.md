@@ -9,7 +9,11 @@
 
 This document explains the Product Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
-This extension provides a generic framework to describe products across domains better in STAC.
+This extension provides a generic framework to describe products related to the data in a STAC catalog.
+A product is a package offer of the STAC item and thus describes properties specific to the product packaging and its distribution.
+Several products may be specified at assets level, each with its own properties.
+This extension is intended to be adapted by other extensions that provide best practises or definitions about the product like
+specific dictionaries for the product type or the timeliness of the product.
 
 - Examples:
   - [Item example](examples/item.json): Shows the basic usage of the extension in a STAC Item
