@@ -16,7 +16,8 @@
     ],
     "product:type": "GRD",
     "product:timeliness": "PT3H",
-    "product:timeliness_category": "NRT"
+    "product:timeliness_category": "NRT",
+    "product:acquisition_type": "nominal"
   },
   "geometry": {
     "type": "Polygon",

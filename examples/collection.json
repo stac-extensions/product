@@ -39,7 +39,8 @@
     ],
     "product:timeliness_category": [
       "NRT"
-    ]
+    ],
+    "product:acquisition_type": "calibration"
   },
   "links": [
     {
