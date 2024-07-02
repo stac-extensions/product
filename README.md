@@ -49,6 +49,18 @@ Some extensions may specify more specific rules for this field.
 
 This field superceedes the `sar:product_type` field.
 
+#### product:acquisition_type
+
+The product acquisition type in this extension is an enumeration text that providers can use to descibe their product types.
+As described in the [specifications](https://docs.ogc.org/is/10-157r4/10-157r4.html):
+
+> Used to distinguish at a high level the appropriateness of the acquisition for "general" use, whether the product is a nominal acquisition, special calibration product or other.
+
+Admitted values are:
+ - `nominal`
+ - `calibration`
+ - `other`
+
 #### Timeliness
 
 Below you can find an example that shows how the timeliness fields could be used.
