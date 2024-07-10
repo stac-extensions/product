@@ -52,7 +52,7 @@ This field superceedes the `sar:product_type` field.
 
 #### product:acquisition_type
 
-The product acquisition type in this extension is an enumeration text that providers can use to descibe their product types.
+The product acquisition type in this extension is an enumeration text that providers can use to describe their product types.
 As described in the [specifications](https://docs.ogc.org/is/10-157r4/10-157r4.html#24):
 
 > Used to distinguish at a high level the appropriateness of the acquisition for "general" use, whether the product is a nominal acquisition, special calibration product or other.
