@@ -36,6 +36,7 @@ The fields in the table below can be used in these parts of STAC documents:
 | product:type                | string | The product type.                                            |
 | product:timeliness          | string | The average expected timeliness of the product as an [ISO 8601 Duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
 | product:timeliness_category | string | A proprietary category identifier for the timeliness of the product. |
+| product:acquisition_type    | string | The acquisition type of the product.                         |
 
 > \[!IMPORTANT]  
 > `product:timeliness` is REQUIRED if `product:timeliness_category` is provided.
