@@ -59,9 +59,9 @@ As described in the [specifications](https://docs.ogc.org/is/10-157r4/10-157r4.h
 > whether the product is a nominal acquisition, special calibration product or other.
 
 Admitted values are:
- - `nominal`
- - `calibration`
- - `other`
+- `nominal`
+- `calibration`
+- `other`
 
 Sentinel-2 [Annex A (page 90)](https://sentinel.esa.int/documents/247904/2047089/Sentinel-2_Cal-Val_Phase-E2.) provides the calibration sites so some
 acquisitions over those areas will be acquired for calibration purposes.
