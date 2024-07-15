@@ -55,16 +55,21 @@ This field superceedes the `sar:product_type` field.
 The product acquisition type in this extension is an enumeration text that providers can use to describe their product types.
 As described in the [specifications](https://docs.ogc.org/is/10-157r4/10-157r4.html#24), Table 5, property `acquisitionType`:
 
-> Used to distinguish at a high level the appropriateness of the acquisition for "general" use, whether the product is a nominal acquisition, special calibration product or other.
+> Used to distinguish at a high level the appropriateness of the acquisition for "general" use,
+> whether the product is a nominal acquisition, special calibration product or other.
 
 Admitted values are:
  - `nominal`
  - `calibration`
  - `other`
 
-Sentinel-2 [Annex A (page 90)](https://sentinel.esa.int/documents/247904/2047089/Sentinel-2_Cal-Val_Phase-E2.) provides the calibration sites so some acquisitions over those areas will be acquired for calibration purposes. The `product:acquisition_type` field brings is the possibility to "flag" products as `nominal`, `calibration` or `other` (not `nominal`, not `calibration`).
+Sentinel-2 [Annex A (page 90)](https://sentinel.esa.int/documents/247904/2047089/Sentinel-2_Cal-Val_Phase-E2.) provides the calibration sites so some
+acquisitions over those areas will be acquired for calibration purposes.
+The `product:acquisition_type` field brings is the possibility to "flag" products as `nominal`, `calibration`
+or `other` (not `nominal`, not `calibration`).
 
-[Sentinel-1](https://sentinels.copernicus.eu/web/sentinel/-/copernicus-sentinel-1-calibration-campaign-on-going-in-europe) provides few acquisitions in given dates and orbits that were acquired in a different mode. Those products would have `calibration`.
+[Sentinel-1](https://sentinels.copernicus.eu/web/sentinel/-/copernicus-sentinel-1-calibration-campaign-on-going-in-europe) provides few acquisitions
+in given dates and orbits that were acquired in a different mode. Those products would have `calibration`.
 
 #### Timeliness
 
