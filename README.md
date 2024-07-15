@@ -62,6 +62,10 @@ Admitted values are:
  - `calibration`
  - `other`
 
+Sentinel-2 [Annex A (page 90)](https://sentinel.esa.int/documents/247904/2047089/Sentinel-2_Cal-Val_Phase-E2.) provides the calibration sites so some acquisitions over those areas will be acquired for calibration purposes. The `product:acquisition_type` field brings is the possibility to "flag" products as `nominal`, `calibration` or `other` (not `nominal`, not `calibration`).
+
+[Sentinel-1](https://sentinels.copernicus.eu/web/sentinel/-/copernicus-sentinel-1-calibration-campaign-on-going-in-europe) provides few acquisitions in given dates and orbits that were acquired in a different mode. Those products would have `calibration`.
+
 #### Timeliness
 
 Below you can find an example that shows how the timeliness fields could be used.
