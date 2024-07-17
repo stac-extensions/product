@@ -119,6 +119,9 @@
         },
         "product:timeliness_category": {
           "$ref": "#/definitions/product:timeliness_category"
+        },
+        "product:acquisition_type": {
+          "$ref": "#/definitions/product:acquisition_type"
         }
       },
       "patternProperties": {
@@ -136,6 +139,10 @@
     },
     "product:timeliness_category": {
       "type": "string"
+    },
+    "product:acquisition_type": {
+      "type": "string",
+      "enum": [ "nominal", "calibration", "other" ]
     },
     "json_schema": {
       "$comment": "JSON Schema",

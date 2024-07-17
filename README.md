@@ -36,6 +36,7 @@ The fields in the table below can be used in these parts of STAC documents:
 | product:type                | string | The product type.                                            |
 | product:timeliness          | string | The average expected timeliness of the product as an [ISO 8601 Duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
 | product:timeliness_category | string | A proprietary category identifier for the timeliness of the product. |
+| product:acquisition_type    | string | The acquisition type of the product.                         |
 
 > \[!IMPORTANT]  
 > `product:timeliness` is REQUIRED if `product:timeliness_category` is provided.
@@ -48,6 +49,28 @@ The product type in this extension is a free-form text that providers can freely
 Some extensions may specify more specific rules for this field.
 
 This field superceedes the `sar:product_type` field.
+
+#### product:acquisition_type
+
+The product acquisition type describes the purpose of the acquisition.
+It is similar to the `acquisitionType` field from the 
+[OGC® Earth Observation Metadata profile of Observations & Measurements , Table 5](https://docs.ogc.org/is/10-157r4/10-157r4.html#24):
+
+> Used to distinguish at a high level the appropriateness of the acquisition for "general" use,
+> whether the product is a nominal acquisition, special calibration product or other.
+
+Admitted values are:
+- `nominal`
+- `calibration`
+- `other`
+
+Sentinel-2 [Annex A (page 90)](https://sentinel.esa.int/documents/247904/2047089/Sentinel-2_Cal-Val_Phase-E2.) provides the calibration sites so some
+acquisitions over those areas will be acquired for calibration purposes.
+The `product:acquisition_type` field brings is the possibility to "flag" products as `nominal`, `calibration`
+or `other` (not `nominal`, not `calibration`).
+
+[Sentinel-1](https://sentinels.copernicus.eu/web/sentinel/-/copernicus-sentinel-1-calibration-campaign-on-going-in-europe) provides few acquisitions
+in given dates and orbits that were acquired in a different mode. Those products would have `calibration`.
 
 #### Timeliness
 
