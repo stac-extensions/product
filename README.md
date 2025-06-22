@@ -1,7 +1,7 @@
 # Product Extension Specification
 
 - **Title:** Product
-- **Identifier:** <https://stac-extensions.github.io/product/v0.1.0/schema.json>
+- **Identifier:** <https://stac-extensions.github.io/product/v1.0.0/schema.json>
 - **Field Name Prefix:** product
 - **Scope:** Item, Collection
 - **Extension [Maturity Classification](https://github.com/radiantearth/stac-spec/tree/master/extensions/README.md#extension-maturity):** Proposal
