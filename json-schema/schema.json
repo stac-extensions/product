@@ -91,6 +91,34 @@
                   }
                 }
               ]
+            },
+            "product:timeliness_category": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/json_schema"
+                },
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "#/definitions/product:timeliness_category"
+                  }
+                }
+              ]
+            },
+            "product:acquisition_type": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/json_schema"
+                },
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "#/definitions/product:acquisition_type"
+                  }
+                }
+              ]
             }
           }
         }
