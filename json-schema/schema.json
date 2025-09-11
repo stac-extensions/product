@@ -119,6 +119,20 @@
                   }
                 }
               ]
+            },
+            "product:availability": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/json_schema"
+                },
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "#/definitions/product:availability"
+                  }
+                }
+              ]
             }
           }
         }
@@ -150,6 +164,9 @@
         },
         "product:acquisition_type": {
           "$ref": "#/definitions/product:acquisition_type"
+        },
+        "product:availability": {
+          "$ref": "#/definitions/product:availability"
         }
       },
       "patternProperties": {
@@ -175,6 +192,13 @@
         "nominal",
         "calibration",
         "other"
+      ]
+    },
+    "product:availability": {
+      "type": "string",
+      "enum": [
+        "online",
+        "offline"
       ]
     },
     "json_schema": {
