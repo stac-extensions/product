@@ -97,6 +97,15 @@ The Copernicus programme releases products on three levels of timeliness:
 >
 > Source: <https://en.wikipedia.org/wiki/ISO_8601#Durations>
 
+#### product:availibility
+
+The product availability describes if the asset(s) defined in the product is(are) downloadable right away, or if it(they) must be retrieved from an archive storage type (e.g. S3 glacier). This field is relevant only at item level. 
+
+Allowed values are:
+
+- `online`
+- `offline`
+
 ## Contributing
 
 All contributions are subject to the
