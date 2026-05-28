@@ -37,11 +37,36 @@ The fields in the table below can be used in these parts of STAC documents:
 | product:timeliness          | string | The average expected timeliness of the product as an [ISO 8601 Duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
 | product:timeliness_category | string | A proprietary category identifier for the timeliness of the product. |
 | product:acquisition_type    | string | The acquisition type of the product.                         |
+| product:status              | string | The lifecycle/status of the product.                         |
 
 > \[!IMPORTANT]  
 > `product:timeliness` is REQUIRED if `product:timeliness_category` is provided.
 
 ### Additional Field Information
+
+#### Timeliness
+
+Below you can find an example that shows how the timeliness fields could be used.
+
+The Copernicus programme releases products on three levels of timeliness:
+
+| Name                | Description                                                  | `product:timeliness`    | `product:timeliness_category` |
+| ------------------- | ------------------------------------------------------------ | ----------------------- | ----------------------------- |
+| Near Real-Time      | Delivered less than 3 hours after data acquisition.          | e.g. `PT3H` (3 hours)   | `NRT`                         |
+| Short Time-Critical | Delivered within 36 (Sentinel-6) to 48 (Sentinel-3) hours after data acquisition. | e.g. `PT36H` (36 hours) | `STC`                         |
+| Non Time-Critical   | Delivered typically within 1 month after data acquisition.   | e.g `P1M` (1 month)     | `NTC`                         |
+
+> \[!WARNING]
+>
+> Be careful when specifying the durations for `product:timeliness`.
+> It is recommended to closely reflect the semantics of timeliness as specified by the provider.
+> For example, if the timeliness is 36 hours, specify  `PT36H` instead of  `P1DT12H`, although allowed:
+>
+> > The standard does not prohibit date and time values in a duration  representation from exceeding their "carry over points".
+> > Thus, `PT36H` could be used as well as `P1DT12H` for representing the same duration.
+> > But keep in mind that `PT36H` is not the same as  `P1DT12H` when switching from or to Daylight saving time.
+>
+> Source: <https://en.wikipedia.org/wiki/ISO_8601#Durations>
 
 #### product:type
 
@@ -73,29 +98,42 @@ or `other` (not `nominal`, not `calibration`).
 [Sentinel-1](https://sentinels.copernicus.eu/web/sentinel/-/copernicus-sentinel-1-calibration-campaign-on-going-in-europe) provides few acquisitions
 in given dates and orbits that were acquired in a different mode. Those products would have `calibration`.
 
-#### Timeliness
+#### product:status
 
-Below you can find an example that shows how the timeliness fields could be used.
+Refers to product status.
+It is similar to the `status` field (of kind `StatusValue`) from the
+[OGC® Earth Observation Metadata profile of Observations & Measurements , Table 5](https://docs.ogc.org/is/10-157r4/10-157r4.html#24):
 
-The Copernicus programme releases products on three levels of timeliness:
+Allowed values are:
 
-| Name                | Description                                                  | `product:timeliness`    | `product:timeliness_category` |
-| ------------------- | ------------------------------------------------------------ | ----------------------- | ----------------------------- |
-| Near Real-Time      | Delivered less than 3 hours after data acquisition.          | e.g. `PT3H` (3 hours)   | `NRT`                         |
-| Short Time-Critical | Delivered within 36 (Sentinel-6) to 48 (Sentinel-3) hours after data acquisition. | e.g. `PT36H` (36 hours) | `STC`                         |
-| Non Time-Critical   | Delivered typically within 1 month after data acquisition.   | e.g `P1M` (1 month)     | `NTC`                         |
+- `archived`
+- `acquired`
+- `cancelled`
+- `failed`
+- `planned`
+- `potential`
+- `rejected`
+- `qualitydegraded`
 
-> \[!WARNING]
->
-> Be careful when specifying the durations for `product:timeliness`.
-> It is recommended to closely reflect the semantics of timeliness as specified by the provider.
-> For example, if the timeliness is 36 hours, specify  `PT36H` instead of  `P1DT12H`, although allowed:
->
-> > The standard does not prohibit date and time values in a duration  representation from exceeding their "carry over points".
-> > Thus, `PT36H` could be used as well as `P1DT12H` for representing the same duration.
-> > But keep in mind that `PT36H` is not the same as  `P1DT12H` when switching from or to Daylight saving time.
->
-> Source: <https://en.wikipedia.org/wiki/ISO_8601#Durations>
+##### Relationship with the Order Extension
+
+`product:status` and `order:status` may appear similar but they describe different entities and lifecycle concerns.
+
+- `order:status` describes the lifecycle or execution state of a request, order, or processing transaction.
+- `product:status` describes the disposition or usability status of the resulting catalogued product artifact itself.
+
+A processing order may therefore complete successfully while the generated product is later considered unsuitable for downstream use.
+
+For example, in a processing chain, a derived product may be successfully generated and catalogued,
+ but later excluded from downstream processing after quality control validation:
+
+```json
+{
+  "properties": {
+    "product:status": "rejected"
+  }
+}
+```
 
 ## Contributing
 

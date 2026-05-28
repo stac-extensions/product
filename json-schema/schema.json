@@ -119,6 +119,20 @@
                   }
                 }
               ]
+            },
+            "product:status": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/json_schema"
+                },
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "#/definitions/product:status"
+                  }
+                }
+              ]
             }
           }
         }
@@ -150,6 +164,9 @@
         },
         "product:acquisition_type": {
           "$ref": "#/definitions/product:acquisition_type"
+        },
+        "product:status": {
+          "$ref": "#/definitions/product:status"
         }
       },
       "patternProperties": {
@@ -175,6 +192,19 @@
         "nominal",
         "calibration",
         "other"
+      ]
+    },
+    "product:status": {
+      "type": "string",
+      "enum": [
+        "archived",
+        "acquired",
+        "cancelled",
+        "failed",
+        "planned",
+        "potential",
+        "rejected",
+        "qualitydegraded"
       ]
     },
     "json_schema": {

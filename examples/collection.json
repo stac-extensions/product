@@ -42,6 +42,9 @@
     ],
     "product:acquisition_type": [
       "calibration"
+    ],
+    "product:status": [
+      "acquired"
     ]
   },
   "links": [
