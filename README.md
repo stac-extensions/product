@@ -90,8 +90,8 @@ Allowed values are:
 - `calibration`
 - `other`
 
-Sentinel-2 [Annex A (page 90)](https://sentinels.copernicus.eu/documents/247904/2047089/Sentinel-2_Cal-Val_Phase-E2) provides the calibration sites so some
-acquisitions over those areas will be acquired for calibration purposes.
+Sentinel-2 [Annex A (page 90)](https://sentinels.copernicus.eu/documents/247904/2047089/Sentinel-2_Cal-Val_Phase-E2)
+provides the calibration sites so some acquisitions over those areas will be acquired for calibration purposes.
 The `product:acquisition_type` field brings the possibility to "flag" products as `nominal`, `calibration`
 or `other` (not `nominal`, not `calibration`).
 
