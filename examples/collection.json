@@ -44,7 +44,13 @@
       "calibration"
     ],
     "product:status": [
-      "acquired"
+      "acquired",
+      "accepted",
+      "rejected"
+    ],
+    "product:quality_status": [
+      "nominal",
+      "degraded"
     ]
   },
   "links": [

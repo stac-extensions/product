@@ -18,7 +18,8 @@
     "product:timeliness": "PT3H",
     "product:timeliness_category": "NRT",
     "product:acquisition_type": "nominal",
-    "product:status": "acquired"
+    "product:status": "accepted",
+    "product:quality_status": "nominal"
   },
   "geometry": {
     "type": "Polygon",

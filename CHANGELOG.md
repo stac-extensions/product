@@ -9,10 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - `product:status`
+- `accepted` value for `product:status`
+- `product:quality_status`
 
 ### Changed
 
 ### Deprecated
+
+- `qualitydegraded` value for `product:status`. Use `product:quality_status` with the value `degraded` instead.
 
 ### Removed
 
