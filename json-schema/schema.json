@@ -133,6 +133,20 @@
                   }
                 }
               ]
+            },
+            "product:quality_status": {
+              "oneOf": [
+                {
+                  "$ref": "#/definitions/json_schema"
+                },
+                {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "items": {
+                    "$ref": "#/definitions/product:quality_status"
+                  }
+                }
+              ]
             }
           }
         }
@@ -167,6 +181,9 @@
         },
         "product:status": {
           "$ref": "#/definitions/product:status"
+        },
+        "product:quality_status": {
+          "$ref": "#/definitions/product:quality_status"
         }
       },
       "patternProperties": {
@@ -195,6 +212,7 @@
       ]
     },
     "product:status": {
+      "$comment": "The value 'qualitydegraded' is deprecated. Use 'product:quality_status' with the value 'degraded' instead.",
       "type": "string",
       "enum": [
         "archived",
@@ -204,7 +222,15 @@
         "planned",
         "potential",
         "rejected",
-        "qualitydegraded"
+        "qualitydegraded",
+        "accepted"
+      ]
+    },
+    "product:quality_status": {
+      "type": "string",
+      "enum": [
+        "nominal",
+        "degraded"
       ]
     },
     "json_schema": {

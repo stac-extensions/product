@@ -38,6 +38,7 @@ The fields in the table below can be used in these parts of STAC documents:
 | product:timeliness_category | string | A proprietary category identifier for the timeliness of the product. |
 | product:acquisition_type    | string | The acquisition type of the product.                         |
 | product:status              | string | The lifecycle/status of the product.                         |
+| product:quality_status      | string | The quality status of the product: `nominal` or `degraded`.  |
 
 > \[!IMPORTANT]  
 > `product:timeliness` is REQUIRED if `product:timeliness_category` is provided.
@@ -113,7 +114,25 @@ Allowed values are:
 - `planned`
 - `potential`
 - `rejected`
-- `qualitydegraded`
+- `qualitydegraded` (**deprecated**, see below)
+- `accepted`
+
+The value `accepted` is an addition to the OGC list.
+It means that the product passed its quality control or validation checks and is fit for downstream use.
+It is the positive counterpart of `rejected`.
+
+In the OGC model, `archived` is the nominal value, but it only tells that the product is in the archive.
+OGC refines `archived` with a separate `statusSubType` field (`ON-LINE` or `OFF-LINE`).
+This extension does not define a status subtype.
+Instead, `accepted` states directly that the product is usable, with a single field.
+
+> \[!WARNING]
+> The value `qualitydegraded` is **deprecated** and may be removed in a future major version.
+> This follows OGC 10-157r4, which deprecates it in favour of the `productQualityStatus` element.
+> Use [`product:quality_status`](#productquality_status) with the value `degraded` to describe the product quality,
+> and keep `product:status` for the lifecycle or disposition of the product.
+> For example, replace `"product:status": "qualitydegraded"` with
+> `"product:status": "accepted"` and `"product:quality_status": "degraded"`.
 
 ##### Relationship with the Order Extension
 
@@ -131,6 +150,48 @@ For example, in a processing chain, a derived product may be successfully genera
 {
   "properties": {
     "product:status": "rejected"
+  }
+}
+```
+
+#### product:quality_status
+
+Indicates whether the quality of the product is degraded or not.
+It is similar to the `productQualityStatus` field from the
+[OGC® Earth Observation Metadata profile of Observations & Measurements , Table 5](https://docs.ogc.org/is/10-157r4/10-157r4.html#24):
+
+> Indicator that specifies whether the product quality is degraded or not.
+> This optional field shall be provided if the product has passed a quality check.
+
+Allowed values are:
+
+- `nominal`: the product passed the quality check without degradation.
+- `degraded`: the product passed the quality check, but its quality is degraded.
+
+Do not set this field if no quality check was done on the product.
+
+`product:quality_status` and `product:status` are independent.
+`product:status` tells whether the product can be used, and `product:quality_status` tells the quality of a usable product.
+For example, a product can be `accepted` with a `degraded` quality.
+
+##### Mapping from GEODES `product_validity`
+
+The [GEODES STAC API](https://geodes.cnes.fr/metadonnees-offertes-par-lapi-stac-de-geodes/) of CNES
+uses a boolean `product_validity` field.
+It tells whether the product has passed quality checks or meets specific predefined criteria.
+The recommended mapping is:
+
+| `product_validity` | `product:status` | `product:quality_status` |
+| ------------------ | ---------------- | ------------------------ |
+| `true`             | `accepted`       | `nominal` or `degraded`  |
+| `false`            | `rejected`       | not set                  |
+| not set            | not set          | not set                  |
+
+```json
+{
+  "properties": {
+    "product:status": "accepted",
+    "product:quality_status": "nominal"
   }
 }
 ```
