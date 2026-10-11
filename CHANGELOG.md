@@ -8,7 +8,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Guidance on the difference between `product:status` and `access:availability` from the Access extension
+
 ### Changed
+
+- Clarified that the fields describe the product itself, not how or where it is distributed
 
 ### Deprecated
 
