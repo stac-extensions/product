@@ -10,7 +10,9 @@
 This document explains the Product Extension to the [SpatioTemporal Asset Catalog](https://github.com/radiantearth/stac-spec) (STAC) specification.
 
 This extension provides a generic framework to describe products related to the data in a STAC catalog.
-A product is a package offer of the STAC item and thus describes properties specific to the product packaging and its distribution.
+A product is a package offer of the STAC item and thus describes properties specific to what the product is and how it is packaged.
+It doesn't describe how or where the product is distributed.
+For example, whether the data can be downloaded directly is described in the [Access Extension](https://github.com/stac-extensions/access).
 Several products may be specified at assets level, each with its own properties.
 This extension is intended to be adapted by other extensions that provide best practises or definitions about the product like
 specific dictionaries for the product type or the timeliness of the product.
@@ -125,6 +127,8 @@ In the OGC model, `archived` is the nominal value, but it only tells that the pr
 OGC refines `archived` with a separate `statusSubType` field (`ON-LINE` or `OFF-LINE`).
 This extension does not define a status subtype.
 Instead, `accepted` states directly that the product is usable, with a single field.
+Whether the data is online or offline is described by
+[`access:availability`](https://github.com/stac-extensions/access#accessavailability) in the Access Extension.
 
 > \[!WARNING]
 > The value `qualitydegraded` is **deprecated** and may be removed in a future major version.
@@ -153,6 +157,14 @@ For example, in a processing chain, a derived product may be successfully genera
   }
 }
 ```
+
+##### Relationship with the Access Extension
+
+`product:status` is a property of the product itself.
+[`access:availability`](https://github.com/stac-extensions/access#accessavailability)
+is a property of a copy of the data at a distributor.
+Both are independent of each other.
+For example, `archived` doesn't imply that the data must be retrieved before it can be downloaded.
 
 #### product:quality_status
 
